@@ -1,0 +1,7 @@
+<div class="admin-bar">
+  You're viewing this page uncached* | <a href="{% url 'admin:django_cache_tags_remove_uncache_cookie' %}?return={{ request.path }}">View the public version</a>
+  <div style='font-size:.6em;'>*The view itself is uncached, but some individual components may still be cached</div>
+</div>
+<script>
+  document.write("<style>body { padding-bottom: "+$('.admin-bar').height()+"px; }</style>")
+</script>
