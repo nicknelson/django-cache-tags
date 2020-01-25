@@ -1,17 +1,19 @@
 import os
-from setuptools import setup
+from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
-README = open(os.path.join(here, 'README.rst')).read()
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
 setup(
     name='django-cache-tags',
-    version='0.1',
-    packages=['django_cache_tags'],
+    version='0.2',
+    packages=find_packages(),
     description='Adds tagging to Djagno view caches',
-    long_description=README,
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     author='Nick Nelson',
-    author_email='whoisnicknelson@gmail.com',
+    author_email='nick.eugene.nelson@gmail.com',
     url='https://github.com/nicknelson/django-cache-tags/',
     license='MIT',
     install_requires=[
