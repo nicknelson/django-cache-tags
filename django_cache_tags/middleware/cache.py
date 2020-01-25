@@ -1,6 +1,6 @@
 from django.middleware.cache import CacheMiddleware, UpdateCacheMiddleware, FetchFromCacheMiddleware
 from django.utils.cache import learn_cache_key, get_max_age, has_vary_header, patch_response_headers
-from django_cache_tags.utils.cache import add_cache_key
+from django_cache_tags.utils import cache
 
 
 class CustomUpdateCacheMiddleware(UpdateCacheMiddleware):
@@ -42,7 +42,7 @@ class CustomUpdateCacheMiddleware(UpdateCacheMiddleware):
                 cache_key = learn_cache_key(request, response, timeout, self.key_prefix, cache=self.cache)
                 # add this cache_key to a cache_keys cache with tags
 
-                add_cache_key(request, cache_key, tags=middleware_cache_tags)
+                cache.add_cache_key(request, cache_key, tags=middleware_cache_tags)
 
                 if hasattr(response, 'render') and callable(response.render):
                     response.add_post_render_callback(
