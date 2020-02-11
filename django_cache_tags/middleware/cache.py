@@ -9,7 +9,7 @@ class CustomUpdateCacheMiddleware(UpdateCacheMiddleware):
         if request.COOKIES.get('view_uncached') == 'true' and request.user.is_authenticated:
             return response
         else:
-            middleware_cache_tags = []
+            middleware_cache_tags = self.cache_tags if self.cache_tags else []
 
             if not self._should_update_cache(request, response):
                 return response

@@ -76,7 +76,13 @@ def cache_view(view):
     key_prefix = view.key_prefix if hasattr(view, "key_prefix") else None
     tags = view.cache_tags if hasattr(view, "cache_tags") else []
 
-    for name, method in view.__dict__.items():
+    items = dict()
+    for b in view.__bases__:
+        items.update(dict(b.__dict__.items()))
+    items.update(dict(view.__dict__.items()))
+    class_methods = [(name, method) for name, method in items.items() if name in cache_methods]
+
+    for name, method in class_methods:
         if name in cache_methods:
             @method_decorator(cache_page(timeout, cache=cache, key_prefix=key_prefix, tags=tags))
             def cached_method(self, request, *args, original_method=method, **kwargs):
