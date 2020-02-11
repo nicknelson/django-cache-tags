@@ -7,12 +7,7 @@ It will:
 - Allow you to add any arbitrary tag strings to a view, letting you break groups of related pages.
 - Easily set specific methods you want to cache in a view without having to define those methods.
 
-## Installation
-
-Install django-cache-tags with pip:
-```
-    pip install django-cache-tags
-```
+## Usage
 
 Include it in your `INSTALLED_APPS` in settings:
 ```
