@@ -9,7 +9,7 @@ setup(
     name='django-cache-tags',
     version='0.2',
     packages=find_packages(),
-    description='Adds tagging to Djagno view caches',
+    description='Adds tagging to Django view caches',
     long_description=long_description,
     long_description_content_type="text/markdown",
     author='Nick Nelson',
